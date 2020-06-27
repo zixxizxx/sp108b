@@ -1,0 +1,20 @@
+{
+ "profile_host": "[settings]\narch=x86_64\narch_build=x86_64\nbuild_type=Release\ncompiler=Visual Studio\ncompiler.runtime=MD\ncompiler.version=15\nos=Windows\nos_build=Windows\n[options]\n[build_requires]\n[env]\n",
+ "graph_lock": {
+  "nodes": {
+   "0": {
+    "pref": null,
+    "options": "sqlite3:enable_column_metadata=False\nsqlite3:enable_explain_comments=False\nsqlite3:enable_fts3=False\nsqlite3:enable_fts4=False\nsqlite3:enable_fts5=False\nsqlite3:enable_json1=False\nsqlite3:enable_rtree=False\nsqlite3:omit_load_extension=False\nsqlite3:shared=False\nsqlite3:threadsafe=1",
+    "requires": [
+     "1"
+    ],
+    "path": "D:\\ccc\\course\\sp\\code\\c\\package\\01-sqlitewin\\conanfile.txt"
+   },
+   "1": {
+    "pref": "sqlite3/3.29.0@bincrafters/stable#0:34b70e4f7ca15a88b9c771a2da37431ceebd76fa#0",
+    "options": "enable_column_metadata=False\nenable_explain_comments=False\nenable_fts3=False\nenable_fts4=False\nenable_fts5=False\nenable_json1=False\nenable_rtree=False\nomit_load_extension=False\nshared=False\nthreadsafe=1"
+   }
+  }
+ },
+ "version": "0.3"
+}

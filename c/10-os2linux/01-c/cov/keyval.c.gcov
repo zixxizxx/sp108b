@@ -1,0 +1,29 @@
+        -:    0:Source:keyval.c
+        -:    0:Graph:keyval.gcno
+        -:    0:Data:keyval.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/* See compilation notes in dict_use.c*/
+        -:    2:#include <stdlib.h> //malloc
+        -:    3:#include <strings.h> //strcasecmp (from POSIX)
+        -:    4:#include "keyval.h"
+        -:    5:
+        4:    6:keyval *keyval_new(char *key, void *value){
+        4:    7:    keyval *out = malloc(sizeof(keyval));
+        4:    8:    *out = (keyval){.key = key, .value=value};
+        4:    9:    return out;
+        -:   10:}
+        -:   11:
+        -:   12:/** Copy a key/value pair. The new pair has pointers to
+        -:   13:  the values in the old pair, not copies of their data.  */
+        2:   14:keyval *keyval_copy(keyval const *in){
+        2:   15:    keyval *out = malloc(sizeof(keyval));
+        2:   16:    *out = *in;
+        2:   17:    return out;
+        -:   18:}
+        -:   19:
+        6:   20:void keyval_free(keyval *in){ free(in); }
+        -:   21:
+       10:   22:int keyval_matches(keyval const *in, char const *key){
+       10:   23:    return !strcasecmp(in->key, key);
+        -:   24:}

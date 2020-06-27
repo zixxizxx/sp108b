@@ -1,0 +1,68 @@
+        -:    0:Source:dict_test.c
+        -:    0:Graph:dict_test.gcno
+        -:    0:Data:dict_test.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/* Suggested makefile:
+        -:    2:----------
+        -:    3:  #Or, use the script in dict_use.c to use as an Autotools build check.
+        -:    4:CFLAGS=-g -Wall -O3 `pkg-config --cflags glib-2.0`
+        -:    5:LDLIBS=`pkg-config --libs glib-2.0`
+        -:    6:dict_test: dict.o keyval.o
+        -:    7:----------
+        -:    8:*/
+        -:    9:#include <glib.h>
+        -:   10:#include "dict.h"
+        -:   11:
+        -:   12:typedef struct {
+        -:   13:    dictionary *dd;
+        -:   14:} dfixture;
+        -:   15:
+        2:   16:void dict_setup(dfixture *df, gconstpointer test_data){
+        2:   17:    df->dd = dictionary_new();
+        2:   18:    dictionary_add(df->dd, "key1", "val1");
+        2:   19:    dictionary_add(df->dd, "key2", NULL);
+        2:   20:}
+        -:   21:
+        2:   22:void dict_teardown(dfixture *df, gconstpointer test_data){
+        2:   23:    dictionary_free(df->dd);
+        2:   24:}
+        -:   25:
+        2:   26:void check_keys(dictionary const *d){
+        2:   27:    char *got_it = dictionary_find(d, "xx");
+        2:   28:    g_assert(got_it == dictionary_not_found);
+        2:   29:    got_it = dictionary_find(d, "key1");
+        2:   30:    g_assert_cmpstr(got_it, ==, "val1");
+        2:   31:    got_it = dictionary_find(d, "key2");
+        2:   32:    g_assert_cmpstr(got_it, ==, NULL);
+        2:   33:}
+        -:   34:
+        1:   35:void test_new(dfixture *df, gconstpointer ignored){
+        1:   36:    check_keys(df->dd);
+        1:   37:}
+        -:   38:
+        1:   39:void test_copy(dfixture *df, gconstpointer ignored){
+        1:   40:    dictionary *cp = dictionary_copy(df->dd);
+        1:   41:    check_keys(cp);
+        1:   42:    dictionary_free(cp);
+        1:   43:}
+        -:   44:
+        1:   45:void test_failure(){
+        1:   46:    if (g_test_subprocess()){ //we are in the sub-test.
+    #####:   47:        dictionary *dd = dictionary_new();
+    #####:   48:        dictionary_add(dd, NULL, "blank");
+        -:   49:    }
+        1:   50:    g_test_trap_subprocess(NULL, 0, 0);
+        1:   51:    g_test_trap_assert_failed();
+        1:   52:    g_test_trap_assert_stderr("NULL is not a valid key.\n");
+        1:   53:}
+        -:   54:
+        1:   55:int main(int argc, char **argv){
+        1:   56:    g_test_init(&argc, &argv, NULL);
+        1:   57:    g_test_add ("/set1/new test", dfixture, NULL,
+        -:   58:                                  dict_setup, test_new, dict_teardown);
+        1:   59:    g_test_add ("/set1/copy test", dfixture, NULL,
+        -:   60:                                  dict_setup, test_copy, dict_teardown);
+        1:   61:    g_test_add_func ("/set2/fail test", test_failure);
+        1:   62:    return g_test_run();
+        -:   63:}

@@ -1,0 +1,44 @@
+[settings]
+    arch=x86_64
+    build_type=Release
+    compiler=Visual Studio
+    compiler.runtime=MD
+    compiler.version=15
+    os=Windows
+
+[requires]
+    sqlite3/3.Y.Z
+
+[options]
+
+
+[full_settings]
+    arch=x86_64
+    arch_build=x86_64
+    build_type=Release
+    compiler=Visual Studio
+    compiler.runtime=MD
+    compiler.version=15
+    os=Windows
+    os_build=Windows
+
+[full_requires]
+    sqlite3/3.29.0@bincrafters/stable:34b70e4f7ca15a88b9c771a2da37431ceebd76fa
+
+[full_options]
+    sqlite3:enable_column_metadata=False
+    sqlite3:enable_explain_comments=False
+    sqlite3:enable_fts3=False
+    sqlite3:enable_fts4=False
+    sqlite3:enable_fts5=False
+    sqlite3:enable_json1=False
+    sqlite3:enable_rtree=False
+    sqlite3:omit_load_extension=False
+    sqlite3:shared=False
+    sqlite3:threadsafe=1
+
+[recipe_hash]
+
+
+[env]
+

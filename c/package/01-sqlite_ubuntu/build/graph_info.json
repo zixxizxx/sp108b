@@ -1,0 +1,50 @@
+{
+ "options": [
+  [
+   "sqlite3:enable_column_metadata",
+   "False"
+  ],
+  [
+   "sqlite3:enable_explain_comments",
+   "False"
+  ],
+  [
+   "sqlite3:enable_fts3",
+   "False"
+  ],
+  [
+   "sqlite3:enable_fts4",
+   "False"
+  ],
+  [
+   "sqlite3:enable_fts5",
+   "False"
+  ],
+  [
+   "sqlite3:enable_json1",
+   "False"
+  ],
+  [
+   "sqlite3:enable_rtree",
+   "False"
+  ],
+  [
+   "sqlite3:omit_load_extension",
+   "False"
+  ],
+  [
+   "sqlite3:shared",
+   "False"
+  ],
+  [
+   "sqlite3:threadsafe",
+   "1"
+  ]
+ ],
+ "root": {
+  "name": null,
+  "version": null,
+  "user": null,
+  "channel": null
+ }
+}
