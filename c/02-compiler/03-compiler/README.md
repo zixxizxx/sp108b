@@ -36,7 +36,7 @@ void IF(){
   emit("(L%d)\n", End);
 }
 ```
-##範例程式(hw.c)
+## 範例程式(hw.c)
 
 ```
 a = 3;
@@ -47,7 +47,7 @@ else
    t = b;
 ```
 
-##執行方法
+## 執行方法
 ```
 在 03-compiler 開 terminal
 
